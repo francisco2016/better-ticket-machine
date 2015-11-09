@@ -24,7 +24,7 @@ public class TicketMachine
 
     
      
-     /**
+    /**
      * Construtor con la posibilidad de hacer descuentos
      */
     public TicketMachine(int cost, boolean tieneDescuento)
@@ -32,9 +32,21 @@ public class TicketMachine
         price = cost;
         balance = 0;
         total = 0;
-        
+        descuento = tieneDescuento;
     }
     
+    /**
+     * Método para permitir a la  máquinas hacer descuentos.
+     */
+    public void printTicketWithDiscount(){
+        
+        float conDescuento = price-(price*10/100);
+        
+        if(descuento == false){
+            System.out.println("Esta máquina no realiza descuentos.");
+        }
+        else{System.out.println("El billete " +price+"€, con descuento del 10% ha quedado en: " +conDescuento+ " euros. ");}
+    }
     
 
     /**
@@ -115,8 +127,9 @@ public class TicketMachine
     }
     
    
-    
-    
+    /**
+     * Método para dejar la máquina con 0 €. y mostrar el total recaudado.
+     */
         public int emptyMachine()
     {
         int recaudacion = -1;
