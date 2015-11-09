@@ -1,3 +1,5 @@
+
+
 /**
  * TicketMachine models a ticket machine that issues
  * flat-fare tickets.
@@ -17,23 +19,22 @@ public class TicketMachine
     private int balance;
     // The total amount of money collected by this machine.
     private int total;
-    // Para poder hacer descuento.
-    private int descuento;
+     
+    private boolean descuento;
 
     
      
-    /**
+     /**
      * Construtor con la posibilidad de hacer descuentos
      */
-    public TicketMachine(int cost, boolean valorDescuento)
+    public TicketMachine(int cost, boolean tieneDescuento)
     {
         price = cost;
         balance = 0;
         total = 0;
-        if(valorDescuento = false){ printTicketWithDiscount();}
-
+        
     }
-   
+    
     
 
     /**
@@ -68,13 +69,6 @@ public class TicketMachine
         }
     }
     
-    /**
-     * Método para máquinas sin descuento
-     */
-    public void printTicketWithDiscount(){
-        System.out.println("Esta máquina no realiza descuentos.");
-    
-    }
     
     
     /**
@@ -120,27 +114,17 @@ public class TicketMachine
         return amountToRefund;
     }
     
+   
+    
+    
         public int emptyMachine()
     {
-    	int recaudacion = -1;
-    	if (balance == 0) {
-		recaudacion = total;
-		total = 0;
-    	}
-    	return recaudacion;
-    }    
+        int recaudacion = -1;
+        if (balance == 0){
+            recaudacion = total;
+            total = 0;
+        }
+        return recaudacion;
+    } 
 }
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-
+ 
