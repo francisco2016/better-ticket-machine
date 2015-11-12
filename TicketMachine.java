@@ -1,5 +1,4 @@
 
-
 /**
  * TicketMachine models a ticket machine that issues
  * flat-fare tickets.
@@ -8,8 +7,8 @@
  * sensible amounts of money, and will only print a ticket
  * if enough money has been input.
  * 
- * @author David J. Barnes and Michael KÃ¶lling
- * @version 2011.07.31
+ * @author Francisco.
+ * @version KINGSTON
  */
 public class TicketMachine
 {
@@ -45,7 +44,7 @@ public class TicketMachine
         if(descuento == false){
             System.out.println("Esta máquina no realiza descuentos.");
         }
-        else{System.out.println("El billete " +price+"€, con descuento del 10% ha quedado en: " +conDescuento+ " euros. ");}
+        else{System.out.println("Saque su billete de " +price+"€, con descuento del 10% por: " + conDescuento + " euros. ");}
     }
     
 
@@ -90,7 +89,8 @@ public class TicketMachine
      */
     public void printTicket()
     {
-        if(balance >= price) {
+        int xx = price-(price*10/100);
+        if(balance >= price && descuento == false ) {
             // Simulate the printing of a ticket.
             System.out.println("##################");
             System.out.println("# The BlueJ Line");
@@ -103,10 +103,33 @@ public class TicketMachine
             total = total + price;
             // Reduce the balance by the prince.
             balance = balance - price;
+           
         }
-        else {
-            int amountLeftToPay;
-             amountLeftToPay = price -balance;
+        
+        else if(balance >= price && descuento == true) {
+           // float xx = price-(price*10/100);
+            // Simulate the printing of a ticket.
+            
+            System.out.println("##################");
+            System.out.println("# The BlueJ Line");
+            System.out.println("# Ticket de " +price+ " cents con descuento del 10%");
+            System.out.println("# Total " + xx + " cents.");
+            System.out.println("##################");
+            System.out.println();
+
+            // Update the total collected with the price.
+            total = total + xx;
+          
+            // Reduce the balance by the prince.
+            balance = balance - xx;
+            
+        }
+        
+        else if(balance < xx){
+            float amountLeftToPay;
+            //float xx = price-(price*10/100);
+  
+             amountLeftToPay =  xx - balance ;
              System.out.println("Error, la cantidad no es correcta. Faltan: " +amountLeftToPay+ " euros. ");
             //System.out.println("You must insert at least: " +
                                //(price - balance) + " more cents.");
